@@ -18,7 +18,7 @@
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
-            <div class="logo">PROF. DR. S. BALAJI SCIENCE ACADEMY</div>
+            <div class="logo">Prof. Balaji</div>
             <button class="menu-toggle" id="menuToggle">
                 <span></span>
                 <span></span>
@@ -36,49 +36,78 @@
 
     <!-- Hero Section -->
     <section class="hero">
-        <div class="container">
-            <span class="hero-label">Class 12 · CBSE & TN State Board</span>
-            <h1 class="hero-title">Score High in Board Exams. <br> <span class="italic">No NEET/JEE distractions.</span></h1>
-            <p class="hero-description">
-                Most students realise too late that board exams and entrance exams need different strategies to succeed. Most coaching is built for entrance exams. <strong>We're built for board exams</strong> — the one result that shapes your percentage, your college, and your future.
-            </p>
-            <div class="hero-cta">
-                <a href="tel:+919787692116" class="btn btn-primary">Book free demo →</a>
-                <a href="#courses" class="btn btn-secondary">See courses ▶</a>
-            </div>
+        <div class="hero-container">
+            <!-- Left Side: 65% -->
+            <div class="hero-left">
+                <span class="hero-label">Class 12 · CBSE & TN State Board</span>
+                <h1 class="hero-title">Score High in Board Exams</h1>
+                <p class="hero-subtitle"><span class="italic">No NEET/JEE distractions.</span></p>
+                
+                <p class="hero-description">
+                    Most students realise too late that board exams and entrance exams need different strategies to succeed. Most coaching is built for entrance exams. <strong>We're built for board exams</strong> — the one result that shapes your percentage, your college, and your future.
+                </p>
+                
+                <div class="hero-cta">
+                    <a href="tel:+919787692116" class="btn btn-primary">Book free demo →</a>
+                    <a href="#courses" class="btn btn-secondary">See courses ▶</a>
+                </div>
 
-            <div class="hero-stats">
+                <!-- Profile Card -->
                 <div class="prof-card">
-                    <div class="prof-avatar">SB</div>
+                    <div class="prof-avatar">
+                        <img src="prof-photo.jpg" alt="Prof. Dr. S. Balaji" id="profPhoto">
+                        <span id="profInitials" class="prof-initials">SB</span>
+                    </div>
                     <div class="prof-info">
                         <h3>Prof. Dr. S. Balaji</h3>
-                        <p>M.Sc., Ph.D.<br>IIT Madras Postdoc · 25+ yrs teaching</p>
-                        <div class="subjects">
-                            <span>Physics</span>
-                            <span>Chemistry</span>
-                            <span>50+ publications</span>
+                        <p>M.Sc., Ph.D. | IIT Madras Postdoc<br>25+ years teaching</p>
+                        <div class="prof-subjects">
+                            <span class="subject-pill">Physics</span>
+                            <span class="subject-pill">Chemistry</span>
+                            <span class="subject-pill">50+ publications</span>
                         </div>
                     </div>
                 </div>
-                <div class="results-card">
-                    <h4>Your board exam target</h4>
-                    <div class="target">90%+</div>
-                    <p>Class 12 Board Result</p>
-                    <div class="result-grid">
-                        <div>
-                            <span class="result-label">Physics</span>
-                            <span class="result-value">92%</span>
+            </div>
+
+            <!-- Right Side: 35% -->
+            <div class="hero-right">
+                <div class="results-section">
+                    <h4 class="results-title">Your Board Exam Target</h4>
+                    <div class="results-target">90%+</div>
+                    <p class="results-subtitle">Class 12 Board Result</p>
+
+                    <!-- Horizontal Bar Charts -->
+                    <div class="bar-chart">
+                        <div class="bar-item">
+                            <div class="bar-label">Physics</div>
+                            <div class="bar-container">
+                                <div class="bar-fill physics-bar" style="width: 96%;">
+                                    <span class="bar-value">96%</span>
+                                </div>
+                            </div>
                         </div>
-                        <div>
-                            <span class="result-label">Chemistry</span>
-                            <span class="result-value">89%</span>
+                        
+                        <div class="bar-item">
+                            <div class="bar-label">Chemistry</div>
+                            <div class="bar-container">
+                                <div class="bar-fill chemistry-bar" style="width: 95%;">
+                                    <span class="bar-value">95%</span>
+                                </div>
+                            </div>
                         </div>
-                        <div>
-                            <span class="result-label">Overall</span>
-                            <span class="result-value">91%</span>
+                        
+                        <div class="bar-item">
+                            <div class="bar-label">Overall</div>
+                            <div class="bar-container">
+                                <div class="bar-fill overall-bar" style="width: 95%;">
+                                    <span class="bar-value">95%</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <p class="board-focus">Board-focus only!</p>
+
+                    <p class="results-badge">Board-focus only!</p>
                 </div>
             </div>
         </div>
@@ -87,12 +116,15 @@
     <!-- Courses Section -->
     <section id="courses" class="courses">
         <div class="container">
-            <h2 class="section-title">Find your course.</h2>
-            <p class="section-subtitle">Board-focused, concept-first coaching for Class 12 and beyond — pick the course that fits your curriculum.</p>
+            <div class="section-header">
+                <span class="section-label">COURSES OFFERED</span>
+                <h2 class="section-title">Find your course.</h2>
+                <p class="section-subtitle">Board-focused, concept-first coaching for Class 12 and beyond — pick the course that fits your curriculum.</p>
+            </div>
 
             <div class="courses-grid">
                 <!-- CBSE Class 12 -->
-                <div class="course-card">
+                <div class="course-card glass">
                     <div class="course-badge">Limited Seats</div>
                     <div class="course-format">Online & In-Person</div>
                     <h3>CBSE<br><span class="course-class">Class 12</span></h3>
@@ -120,7 +152,7 @@
                 </div>
 
                 <!-- TN State Board Class 12 -->
-                <div class="course-card">
+                <div class="course-card glass">
                     <div class="course-badge">Limited Seats</div>
                     <div class="course-format">Online & In-Person</div>
                     <h3>TN State Board<br><span class="course-class">Class 12</span></h3>
@@ -141,7 +173,7 @@
                 </div>
 
                 <!-- Free Class 10 YouTube -->
-                <div class="course-card course-card--free">
+                <div class="course-card glass glass-free">
                     <div class="course-badge badge-free">Free</div>
                     <h3>CBSE<br><span class="course-class">Class 10</span></h3>
                     <p class="course-subtitle">Science</p>
@@ -157,9 +189,8 @@
                 </div>
 
                 <!-- Coming Soon Class 11 -->
-                <div class="course-card course-card--coming">
+                <div class="course-card glass glass-coming">
                     <div class="course-badge badge-coming">Coming Soon</div>
-                    <div class="course-badge-sub">Free</div>
                     <h3>CBSE<br><span class="course-class">Class 11</span></h3>
                     <p class="course-subtitle">Physics & Chemistry</p>
                     <p class="course-description">A full free series covering Class 11 Physics & Chemistry is coming soon to the YouTube channel.</p>
@@ -178,32 +209,35 @@
     <!-- How to Attend Section -->
     <section class="attend">
         <div class="container">
-            <h2 class="section-title">Same professor. <span class="italic">Your choice of classroom.</span></h2>
-            <p class="section-subtitle">Attend in person if you're in Kanchipuram, or join live from anywhere in the world — same batch, same quality.</p>
+            <div class="section-header">
+                <span class="section-label">MODES</span>
+                <h2 class="section-title">Same professor. <span class="italic">Your choice of classroom.</span></h2>
+                <p class="section-subtitle">Attend in person if you're in Kanchipuram, or join live from anywhere in the world — same batch, same quality.</p>
+            </div>
 
             <div class="attend-grid">
-                <div class="attend-card">
+                <div class="attend-card glass">
                     <h3>Based in Kanchipuram?</h3>
                     <h4>Classroom</h4>
                     <p>Learn face-to-face at our coaching centre — structured, focused, and deeply personal.</p>
                     <ul class="attend-features">
-                        <li>Direct access to the professor</li>
-                        <li>Instant doubt clearing in class</li>
-                        <li>Weekly practice tests on-site</li>
-                        <li>Focused, distraction-free environment</li>
+                        <li>✓ Direct access to the professor</li>
+                        <li>✓ Instant doubt clearing in class</li>
+                        <li>✓ Weekly practice tests on-site</li>
+                        <li>✓ Focused, distraction-free environment</li>
                     </ul>
                     <a href="https://maps.app.goo.gl/HRtqZ7h7q2wzd7sp9" class="btn btn-small btn-primary">🗺️ Find on Maps</a>
                 </div>
 
-                <div class="attend-card">
+                <div class="attend-card glass">
                     <h3>Anywhere in the world?</h3>
                     <h4>Online</h4>
                     <p>Join live classes on Google Meet — same professor, same quality, no matter where you are.</p>
                     <ul class="attend-features">
-                        <li>Live sessions via Google Meet</li>
-                        <li>Same batch, same syllabus</li>
-                        <li>Study from home — zero commute</li>
-                        <li>Open to students across the globe</li>
+                        <li>✓ Live sessions via Google Meet</li>
+                        <li>✓ Same batch, same syllabus</li>
+                        <li>✓ Study from home — zero commute</li>
+                        <li>✓ Open to students across the globe</li>
                     </ul>
                     <a href="https://wa.me/+919787692116" class="btn btn-small btn-primary">🖥️ Get Classroom Link</a>
                 </div>
@@ -214,8 +248,11 @@
     <!-- About Section -->
     <section id="about" class="about">
         <div class="container">
-            <h2 class="section-title">The mind behind the method.</h2>
-            <p class="section-subtitle">25+ years of teaching, an IIT Madras postdoc, and 50+ international publications — all in service of one goal: your board exam success.</p>
+            <div class="section-header">
+                <span class="section-label">PROFESSOR</span>
+                <h2 class="section-title">The mind behind the method.</h2>
+                <p class="section-subtitle">25+ years of teaching, an IIT Madras postdoc, and 50+ international publications — all in service of one goal: your board exam success.</p>
+            </div>
 
             <div class="about-content">
                 <div class="about-text">
@@ -238,8 +275,11 @@
     <!-- FAQs Section -->
     <section id="faqs" class="faqs">
         <div class="container">
-            <h2 class="section-title">Got questions? We've got answers.</h2>
-            <p class="section-subtitle">Everything you need to know before booking your free demo class.</p>
+            <div class="section-header">
+                <span class="section-label">HELP</span>
+                <h2 class="section-title">Got questions? We've got answers.</h2>
+                <p class="section-subtitle">Everything you need to know before booking your free demo class.</p>
+            </div>
 
             <div class="faq-list">
                 <div class="faq-item">
@@ -345,15 +385,21 @@
         </div>
     </section>
 
-    <!-- Blog Section -->
+    <!-- Blog/Substack Section -->
     <section id="blog" class="blog">
         <div class="container">
-            <h2 class="section-title">Board Exam Insider</h2>
-            <p class="section-subtitle">Free articles on exam strategy — written for students and parents who want the full picture.</p>
+            <div class="section-header">
+                <span class="section-label">INSIGHTS</span>
+                <h2 class="section-title">Board Exam Insider</h2>
+                <p class="section-subtitle">Free articles on exam strategy — written for students and parents who want the full picture.</p>
+            </div>
 
             <div class="blog-content">
+                <div class="substack-container">
+                    <iframe src="https://profbalaji.substack.com/embed" width="480" height="320" style="border: 1px solid #EEE; background: white" frameborder="0" scrolling="no"></iframe>
+                </div>
                 <div class="blog-text">
-                    <h3>What schools don't tell students about board exams — written plainly.</h3>
+                    <h3>What schools don't tell students about board exams.</h3>
                     <p>How toppers really prepare. What the paper-setter actually rewards. The patterns most students miss — backed by 25+ years in the classroom.</p>
                     <a href="https://profbalaji.substack.com/" class="btn btn-primary">Read free articles →</a>
                 </div>
@@ -384,8 +430,11 @@
     <!-- Contact Section -->
     <section id="contact" class="contact">
         <div class="container">
-            <h2 class="section-title">Let's get you started.</h2>
-            <p class="section-subtitle">Call or WhatsApp us to book your free demo class — in person in Kanchipuram or online from anywhere in the world.</p>
+            <div class="section-header">
+                <span class="section-label">CONNECT</span>
+                <h2 class="section-title">Let's get you started.</h2>
+                <p class="section-subtitle">Call or WhatsApp us to book your free demo class — in person in Kanchipuram or online from anywhere in the world.</p>
+            </div>
 
             <div class="contact-info">
                 <div class="address-block">
@@ -475,6 +524,18 @@
             } else {
                 navbar.classList.remove('scrolled');
             }
+        });
+
+        // Hide initials when image loads
+        const profPhoto = document.getElementById('profPhoto');
+        const profInitials = document.getElementById('profInitials');
+        
+        profPhoto.addEventListener('load', () => {
+            profInitials.style.display = 'none';
+        });
+        
+        profPhoto.addEventListener('error', () => {
+            profInitials.style.display = 'flex';
         });
     </script>
 </body>
