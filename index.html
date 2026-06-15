@@ -12,13 +12,13 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
-            <div class="logo">Prof. Balaji</div>
+            <div class="logo">PROF. DR. S. BALAJI<br>SCIENCE ACADEMY</div>
             <button class="menu-toggle" id="menuToggle">
                 <span></span>
                 <span></span>
@@ -36,7 +36,7 @@
 
     <!-- Hero Section -->
     <section class="hero">
-        <div class="hero-container">
+        <div class="container hero-container">
             <!-- Left Side: 65% -->
             <div class="hero-left">
                 <span class="hero-label">Class 12 · CBSE & TN State Board</span>
@@ -48,8 +48,12 @@
                 </p>
                 
                 <div class="hero-cta">
-                    <a href="tel:+919787692116" class="btn btn-primary">Book free demo →</a>
-                    <a href="#courses" class="btn btn-secondary">See courses ▶</a>
+                    <a href="tel:+919787692116" class="btn btn-primary">
+                        <span class="icon-phone">📞</span> Book free demo
+                    </a>
+                    <a href="#courses" class="btn btn-secondary">
+                        <span class="icon-arrow">→</span> See courses
+                    </a>
                 </div>
 
                 <!-- Profile Card -->
@@ -62,9 +66,9 @@
                         <h3>Prof. Dr. S. Balaji</h3>
                         <p>M.Sc., Ph.D. | IIT Madras Postdoc<br>25+ years teaching</p>
                         <div class="prof-subjects">
-                            <span class="subject-pill">Physics</span>
-                            <span class="subject-pill">Chemistry</span>
-                            <span class="subject-pill">50+ publications</span>
+                            <span class="subject-pill physics">Physics</span>
+                            <span class="subject-pill chemistry">Chemistry</span>
+                            <span class="subject-pill publications">50+ publications</span>
                         </div>
                     </div>
                 </div>
@@ -72,18 +76,18 @@
 
             <!-- Right Side: 35% -->
             <div class="hero-right">
-                <div class="results-section">
+                <div class="results-section glass-effect">
                     <h4 class="results-title">Your Board Exam Target</h4>
-                    <div class="results-target">90%+</div>
+                    <div class="results-target" id="targetScore">90%+</div>
                     <p class="results-subtitle">Class 12 Board Result</p>
 
-                    <!-- Horizontal Bar Charts -->
+                    <!-- Animated Bar Charts -->
                     <div class="bar-chart">
                         <div class="bar-item">
                             <div class="bar-label">Physics</div>
                             <div class="bar-container">
-                                <div class="bar-fill physics-bar" style="width: 96%;">
-                                    <span class="bar-value">96%</span>
+                                <div class="bar-fill physics-bar" id="physicsBar">
+                                    <span class="bar-value">0%</span>
                                 </div>
                             </div>
                         </div>
@@ -91,8 +95,8 @@
                         <div class="bar-item">
                             <div class="bar-label">Chemistry</div>
                             <div class="bar-container">
-                                <div class="bar-fill chemistry-bar" style="width: 95%;">
-                                    <span class="bar-value">95%</span>
+                                <div class="bar-fill chemistry-bar" id="chemistryBar">
+                                    <span class="bar-value">0%</span>
                                 </div>
                             </div>
                         </div>
@@ -100,8 +104,8 @@
                         <div class="bar-item">
                             <div class="bar-label">Overall</div>
                             <div class="bar-container">
-                                <div class="bar-fill overall-bar" style="width: 95%;">
-                                    <span class="bar-value">95%</span>
+                                <div class="bar-fill overall-bar" id="overallBar">
+                                    <span class="bar-value">0%</span>
                                 </div>
                             </div>
                         </div>
@@ -124,8 +128,8 @@
 
             <div class="courses-grid">
                 <!-- CBSE Class 12 -->
-                <div class="course-card glass">
-                    <div class="course-badge">Limited Seats</div>
+                <div class="course-card glass-effect">
+                    <div class="course-badge limited">Limited Seats</div>
                     <div class="course-format">Online & In-Person</div>
                     <h3>CBSE<br><span class="course-class">Class 12</span></h3>
                     <p class="course-subtitle">Physics & Chemistry</p>
@@ -134,14 +138,14 @@
                     <div class="course-timings">
                         <h4>Batch Timings</h4>
                         <div class="timing-item">
-                            <span class="emoji">📅</span>
+                            <span class="icon">📅</span>
                             <div>
                                 <strong>Weekday Batch</strong><br>
                                 Mon to Sat: 5:30 AM – 6:30 AM
                             </div>
                         </div>
                         <div class="timing-item">
-                            <span class="emoji">📅</span>
+                            <span class="icon">📅</span>
                             <div>
                                 <strong>Weekend Batch</strong><br>
                                 Sat 6:00 PM – 8:30 PM | Sun 6:00 AM – 8:30 AM
@@ -152,8 +156,8 @@
                 </div>
 
                 <!-- TN State Board Class 12 -->
-                <div class="course-card glass">
-                    <div class="course-badge">Limited Seats</div>
+                <div class="course-card glass-effect">
+                    <div class="course-badge limited">Limited Seats</div>
                     <div class="course-format">Online & In-Person</div>
                     <h3>TN State Board<br><span class="course-class">Class 12</span></h3>
                     <p class="course-subtitle">Physics & Chemistry</p>
@@ -162,7 +166,7 @@
                     <div class="course-timings">
                         <h4>Batch Timings</h4>
                         <div class="timing-item">
-                            <span class="emoji">📅</span>
+                            <span class="icon">📅</span>
                             <div>
                                 <strong>Weekday Batch</strong><br>
                                 Mon to Sat: 6:30 AM – 7:30 AM
@@ -173,8 +177,8 @@
                 </div>
 
                 <!-- Free Class 10 YouTube -->
-                <div class="course-card glass glass-free">
-                    <div class="course-badge badge-free">Free</div>
+                <div class="course-card glass-effect free-card">
+                    <div class="course-badge free">Free</div>
                     <h3>CBSE<br><span class="course-class">Class 10</span></h3>
                     <p class="course-subtitle">Science</p>
                     <p class="course-description">A complete free lecture series on YouTube — covering every chapter for your board exams.</p>
@@ -189,8 +193,8 @@
                 </div>
 
                 <!-- Coming Soon Class 11 -->
-                <div class="course-card glass glass-coming">
-                    <div class="course-badge badge-coming">Coming Soon</div>
+                <div class="course-card glass-effect coming-card">
+                    <div class="course-badge coming">Coming Soon</div>
                     <h3>CBSE<br><span class="course-class">Class 11</span></h3>
                     <p class="course-subtitle">Physics & Chemistry</p>
                     <p class="course-description">A full free series covering Class 11 Physics & Chemistry is coming soon to the YouTube channel.</p>
@@ -216,7 +220,7 @@
             </div>
 
             <div class="attend-grid">
-                <div class="attend-card glass">
+                <div class="attend-card glass-effect">
                     <h3>Based in Kanchipuram?</h3>
                     <h4>Classroom</h4>
                     <p>Learn face-to-face at our coaching centre — structured, focused, and deeply personal.</p>
@@ -229,7 +233,7 @@
                     <a href="https://maps.app.goo.gl/HRtqZ7h7q2wzd7sp9" class="btn btn-small btn-primary">🗺️ Find on Maps</a>
                 </div>
 
-                <div class="attend-card glass">
+                <div class="attend-card glass-effect">
                     <h3>Anywhere in the world?</h3>
                     <h4>Online</h4>
                     <p>Join live classes on Google Meet — same professor, same quality, no matter where you are.</p>
@@ -298,7 +302,7 @@
                         <span class="faq-toggle">+</span>
                     </button>
                     <div class="faq-answer">
-                        <p>The course runs all the way through to your board exams, regardless of when you join. Once the full syllabus is covered, we move into structured revision and a practice test series — with personalised feedback to help each student identify gaps and reach their target score. That said, we recommend joining as early as possible to get the most out of the program.</p>
+                        <p>The course runs all the way through to your board exams. Once the full syllabus is covered, we move into structured revision and practice tests with personalised feedback.</p>
                     </div>
                 </div>
 
@@ -308,7 +312,7 @@
                         <span class="faq-toggle">+</span>
                     </button>
                     <div class="faq-answer">
-                        <p>Yes! We offer a free demo class with absolutely no commitment required. Just Call or WhatsApp us before coming to the class in-person or to get the Google Meet invite to attend online.</p>
+                        <p>Yes! We offer a free demo class with absolutely no commitment required. Call or WhatsApp us before coming to class in-person or to get the Google Meet invite to attend online.</p>
                     </div>
                 </div>
 
@@ -328,7 +332,7 @@
                         <span class="faq-toggle">+</span>
                     </button>
                     <div class="faq-answer">
-                        <p>Yes, classes are conducted live via Google Meet — you can attend from anywhere in the world. We use professional-grade audio and video to make online classes feel just like being in the classroom. Call us to receive your access link and batch details before the session begins. Switching is completely flexible. If you've enrolled for in-person classes but can't make it on a particular day, you can simply join online — so you never miss a session. Likewise, online students are always welcome to visit us in person for doubt-clearing sessions or practice tests.</p>
+                        <p>Yes, classes are conducted live via Google Meet. You can attend from anywhere in the world. Switching is completely flexible — if you've enrolled for in-person but can't make it, join online. Online students are always welcome to visit us in person.</p>
                     </div>
                 </div>
 
@@ -338,7 +342,7 @@
                         <span class="faq-toggle">+</span>
                     </button>
                     <div class="faq-answer">
-                        <p>CBSE Digest is a complete Class 10 Science lecture series on YouTube — and yes, it is 100% free. Every chapter is covered from the basics all the way through to what you need for your board exams. The series includes concept explanations, theory, exam-focused lessons, and notes — everything a Class 10 student needs in one place. All it takes is consistent preparation: watch the lectures, practice with the notes, and you'll be ready to ace your board exams with confidence.</p>
+                        <p>CBSE Digest is a complete Class 10 Science lecture series on YouTube — and yes, it is 100% free. Every chapter is covered from basics through what you need for your board exams.</p>
                     </div>
                 </div>
 
@@ -348,7 +352,7 @@
                         <span class="faq-toggle">+</span>
                     </button>
                     <div class="faq-answer">
-                        <p>Physics and Chemistry for Class 12 (both CBSE and TN State Board). For Class 10 CBSE Science, video lessons are available for free on our YouTube channel — covering concepts, formulas, diagrams, and NCERT questions with notes focusing on board exams.</p>
+                        <p>Physics and Chemistry for Class 12 (both CBSE and TN State Board). For Class 10 CBSE Science, video lessons are available for free on our YouTube channel.</p>
                     </div>
                 </div>
 
@@ -358,7 +362,7 @@
                         <span class="faq-toggle">+</span>
                     </button>
                     <div class="faq-answer">
-                        <p>We offer two batches for CBSE students — a weekday batch and a weekend batch — so you can choose what fits your schedule. For TN State Board students, we currently run a weekday batch. For exact timings, refer to the above section.</p>
+                        <p>We offer weekday and weekend batches for CBSE students, so you can choose what fits your schedule. For TN State Board students, we currently run a weekday batch.</p>
                     </div>
                 </div>
 
@@ -368,7 +372,7 @@
                         <span class="faq-toggle">+</span>
                     </button>
                     <div class="faq-answer">
-                        <p>Classroom sessions are held in Kanchipuram. If you are nearby, you are welcome to attend in person. The exact address is available on Google Maps — find the link in the Contact section of this website.</p>
+                        <p>Classroom sessions are held in Kanchipuram. The exact address is available on Google Maps — find the link in the Contact section of this website.</p>
                     </div>
                 </div>
 
@@ -378,7 +382,7 @@
                         <span class="faq-toggle">+</span>
                     </button>
                     <div class="faq-answer">
-                        <p>Prof. Dr. S. Balaji uses a concept-first teaching method — building strong fundamentals before moving to problem solving. Regular practice tests are conducted to track each student's progress, and the small batch size ensures personalized attention.</p>
+                        <p>Prof. Dr. S. Balaji uses a concept-first teaching method — building strong fundamentals before moving to problem solving. Regular practice tests track each student's progress.</p>
                     </div>
                 </div>
             </div>
@@ -396,7 +400,7 @@
 
             <div class="blog-content">
                 <div class="substack-container">
-                    <iframe src="https://profbalaji.substack.com/embed" width="480" height="320" style="border: 1px solid #EEE; background: white" frameborder="0" scrolling="no"></iframe>
+                    <iframe src="https://profbalaji.substack.com/embed" width="480" height="320" style="border: none; background: white; border-radius: 12px;" frameborder="0" scrolling="no"></iframe>
                 </div>
                 <div class="blog-text">
                     <h3>What schools don't tell students about board exams.</h3>
@@ -437,7 +441,7 @@
             </div>
 
             <div class="contact-info">
-                <div class="address-block">
+                <div class="address-block glass-effect">
                     <h3>📍 Classroom Address</h3>
                     <p>If you're in Kanchipuram, you're welcome to join us in person at:</p>
                     <p><strong>Prof. Dr. S. Balaji Science Academy</strong><br>
@@ -457,13 +461,13 @@
             </div>
 
             <div class="social-links">
-                <a href="tel:+919787692116" title="Phone">📞</a>
-                <a href="https://wa.me/+919787692116" title="WhatsApp">💬</a>
-                <a href="https://g.co/kgs/EkVWVxL" title="Google Business">🏢</a>
-                <a href="https://www.linkedin.com/in/profdrsbalaji" title="LinkedIn">🔗</a>
-                <a href="https://scholar.google.co.kr/citations?hl=en&pli=1&user=9NAUZ5MAAAAJ" title="Google Scholar">📚</a>
-                <a href="https://profbalaji.substack.com" title="Substack">📰</a>
-                <a href="https://www.youtube.com/@CBSEdigest" title="YouTube">▶️</a>
+                <a href="tel:+919787692116" title="Phone" class="social-icon">📞</a>
+                <a href="https://wa.me/+919787692116" title="WhatsApp" class="social-icon">💬</a>
+                <a href="https://g.co/kgs/EkVWVxL" title="Google Business" class="social-icon">🏢</a>
+                <a href="https://www.linkedin.com/in/profdrsbalaji" title="LinkedIn" class="social-icon">🔗</a>
+                <a href="https://scholar.google.co.kr/citations?hl=en&pli=1&user=9NAUZ5MAAAAJ" title="Google Scholar" class="social-icon">📚</a>
+                <a href="https://profbalaji.substack.com" title="Substack" class="social-icon">📰</a>
+                <a href="https://www.youtube.com/@CBSEdigest" title="YouTube" class="social-icon">▶️</a>
             </div>
         </div>
     </section>
@@ -537,6 +541,61 @@
         profPhoto.addEventListener('error', () => {
             profInitials.style.display = 'flex';
         });
+
+        // Animate bars on page load or when section comes into view
+        function animateBars() {
+            const physicsBar = document.getElementById('physicsBar');
+            const chemistryBar = document.getElementById('chemistryBar');
+            const overallBar = document.getElementById('overallBar');
+            const targetScore = document.getElementById('targetScore');
+
+            const duration = 2500; // 2.5 seconds
+            const startTime = Date.now();
+            const startValue = 30;
+            const endValues = { physics: 96, chemistry: 95, overall: 95 };
+
+            function animate() {
+                const elapsed = Date.now() - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+
+                const physics = Math.round(startValue + (endValues.physics - startValue) * progress);
+                const chemistry = Math.round(startValue + (endValues.chemistry - startValue) * progress);
+                const overall = Math.round(startValue + (endValues.overall - startValue) * progress);
+
+                physicsBar.style.width = physics + '%';
+                physicsBar.querySelector('.bar-value').textContent = physics + '%';
+
+                chemistryBar.style.width = chemistry + '%';
+                chemistryBar.querySelector('.bar-value').textContent = chemistry + '%';
+
+                overallBar.style.width = overall + '%';
+                overallBar.querySelector('.bar-value').textContent = overall + '%';
+
+                if (progress < 1) {
+                    requestAnimationFrame(animate);
+                }
+            }
+
+            animate();
+        }
+
+        // Trigger animation on page load
+        window.addEventListener('load', animateBars);
+
+        // Optional: Re-trigger animation when section comes into view
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
+                    animateBars();
+                    entry.target.classList.add('animated');
+                }
+            });
+        });
+
+        const resultsSection = document.querySelector('.results-section');
+        if (resultsSection) {
+            observer.observe(resultsSection);
+        }
     </script>
 </body>
 </html>
