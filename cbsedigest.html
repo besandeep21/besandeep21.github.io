@@ -13,45 +13,64 @@
     <style>
         /* ── CBSE Digest Hero – Flash.co inspired ── */
 
-        /* ── Hero shell ── */
         .cbsedigest-hero {
             position: relative;
-            background: #e8eaf6;
+            background-color: #f3f4f8; /* Light gray-blue matching the mockup background */
+            background-image: radial-gradient(circle at 50% 50%, #ffffff 0%, #f3f4f8 80%);
             min-height: 100vh;
             margin-top: 60px;
             overflow: hidden;
             display: flex;
             align-items: center;
+            justify-content: center;
         }
 
-        /* ── Decorative background circles (the light blobs) ── */
-        .hero-blob {
+        /* ── Background concentric rings ── */
+        .hero-ring {
             position: absolute;
+            border: 1.5px solid rgba(13, 41, 85, 0.04);
             border-radius: 50%;
-            background: rgba(255,255,255,0.55);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             pointer-events: none;
+            z-index: 1;
         }
-        .hero-blob-1 { width: 420px; height: 420px; top: 50%; left: 50%; transform: translate(-50%, -50%); }
-        .hero-blob-2 { width: 280px; height: 280px; top: 10%; left: 8%; }
-        .hero-blob-3 { width: 200px; height: 200px; bottom: 8%; left: 12%; opacity: 0.5; }
-        .hero-blob-4 { width: 160px; height: 160px; top: 18%; right: 22%; opacity: 0.45; }
+        .hero-ring-1 { width: 320px; height: 320px; }
+        .hero-ring-2 { width: 540px; height: 540px; }
+        .hero-ring-3 { width: 800px; height: 800px; }
+        .hero-ring-4 { width: 1100px; height: 1100px; }
+
+        /* ── White radial glow behind the phone ── */
+        .hero-glow {
+            position: absolute;
+            width: 480px;
+            height: 480px;
+            background: radial-gradient(circle, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0) 70%);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            z-index: 2;
+        }
 
         /* ── Huge background title text ── */
         .hero-bg-title {
             position: absolute;
-            top: 50%;
+            top: 42%;
             left: 50%;
             transform: translate(-50%, -50%);
-            font-size: clamp(6rem, 13vw, 11rem);
-            font-weight: 900;
-            color: #0d0f3c;
+            font-size: clamp(6.5rem, 13vw, 11rem);
+            font-weight: 800;
+            color: #0d2955; /* Retained color from CBSE digest logo */
+            opacity: 0.95;
             white-space: nowrap;
-            line-height: 1.1;
+            line-height: 1.05;
             text-align: center;
             pointer-events: none;
             user-select: none;
-            z-index: 1;
-            letter-spacing: -0.02em;
+            z-index: 3;
+            letter-spacing: -0.04em;
         }
         .hero-bg-title span {
             display: block;
@@ -60,51 +79,87 @@
         /* ── Three-column layout ── */
         .hero-layout {
             position: relative;
-            z-index: 2;
+            z-index: 4;
             width: 100%;
-            max-width: 1280px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 80px 40px;
+            padding: 80px 40px 0 40px;
             display: grid;
-            grid-template-columns: 1fr auto 1fr;
+            grid-template-columns: 1.15fr 1fr 1.15fr;
             gap: 0 2rem;
             align-items: center;
-            min-height: 100vh;
+            min-height: calc(100vh - 60px);
         }
 
         /* ── Left column ── */
         .hero-left {
             display: flex;
             flex-direction: column;
-            gap: 1.25rem;
+            gap: 1.5rem;
+            margin-bottom: 80px; /* Lift slightly to align with the visual weight on the right */
         }
+        
+        .hero-badge-card {
+            background: #ffffff;
+            border-radius: 24px;
+            width: 88px;
+            height: 88px;
+            box-shadow: 0 12px 32px rgba(13, 41, 85, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            transition: transform 0.3s ease;
+        }
+        .hero-badge-card:hover {
+            transform: translateY(-4px) rotate(-3deg);
+        }
+        .hero-badge-logo {
+            width: 70%;
+            height: 70%;
+            object-fit: contain;
+        }
+
         .hero-tagline {
-            font-size: clamp(1.6rem, 2.8vw, 2.2rem);
+            font-size: clamp(1.8rem, 2.8vw, 2.4rem);
             font-weight: 800;
-            color: #0d0f3c;
-            line-height: 1.3;
+            color: #0d2955;
+            line-height: 1.25;
+            letter-spacing: -0.02em;
         }
         .hero-tagline .accent {
-            color: #1a1de8;
+            color: #0d2955;
+            position: relative;
+            display: inline-block;
         }
-        .hero-sub {
-            font-size: 1rem;
-            color: #555;
-            line-height: 1.7;
-            max-width: 320px;
+        .hero-tagline .accent::after {
+            content: '';
+            position: absolute;
+            bottom: 4px;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: rgba(13, 41, 85, 0.15);
+            border-radius: 2px;
         }
 
         /* ── Center column – phone ── */
         .hero-center {
             display: flex;
             justify-content: center;
-            align-items: flex-end;
+            align-self: end;
+            z-index: 5;
         }
         .hero-phone-img {
-            width: clamp(260px, 22vw, 340px);
+            width: clamp(260px, 22vw, 320px);
             height: auto;
             display: block;
-            filter: drop-shadow(0 24px 48px rgba(0,0,0,0.22));
+            filter: drop-shadow(0 24px 48px rgba(0,0,0,0.15));
+            transform: translateY(12px); /* Seamless overlap with bottom boundary */
+            transition: transform 0.3s ease;
+        }
+        .hero-phone-img:hover {
+            transform: translateY(8px) scale(1.01);
         }
 
         /* ── Right column ── */
@@ -113,107 +168,142 @@
             flex-direction: column;
             align-items: flex-start;
             gap: 1.5rem;
+            margin-bottom: 80px;
         }
-        .hero-right-tagline {
-            font-size: 1rem;
-            color: #0d0f3c;
-            line-height: 1.6;
-        }
-        .hero-right-tagline .accent-blue  { color: #1a1de8; font-weight: 700; }
-        .hero-right-tagline .accent-red   { color: #e81a1a; font-weight: 700; }
-
-        /* Store buttons */
-        .hero-store-btns {
-            display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
-        }
-        .store-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.75rem;
-            background: #0d0f3c;
-            color: #fff;
-            padding: 0.85rem 1.75rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 0.95rem;
-            min-width: 200px;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-        .store-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 28px rgba(13,15,60,0.3);
-        }
-        .store-btn svg {
-            flex-shrink: 0;
-            width: 20px;
-            height: 20px;
-            fill: #fff;
-        }
-
-        /* ── Floating channel badge (top-right of phone area) ── */
-        .hero-channel-badge {
-            position: absolute;
-            top: 18%;
-            right: calc(50% - 280px);
-            background: #fff;
-            border-radius: 16px;
-            padding: 0.6rem 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-            box-shadow: 0 6px 24px rgba(0,0,0,0.12);
-            z-index: 3;
-            animation: floatBadge 3s ease-in-out infinite;
-        }
-        .hero-channel-badge .cbse-dot {
-            width: 36px;
-            height: 36px;
-            background: #1a1de8;
-            border-radius: 50%;
+        
+        .hero-student-card {
+            background: #ffffff;
+            border-radius: 24px;
+            width: 88px;
+            height: 88px;
+            box-shadow: 0 12px 32px rgba(13, 41, 85, 0.08);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #fff;
-            font-size: 0.55rem;
-            font-weight: 800;
-            text-align: center;
-            line-height: 1.1;
-            flex-shrink: 0;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            transition: transform 0.3s ease;
         }
-        .badge-text strong {
-            display: block;
-            font-size: 0.78rem;
-            color: #0d0f3c;
+        .hero-student-card:hover {
+            transform: translateY(-4px) rotate(3deg);
         }
-        .badge-text span {
-            font-size: 0.68rem;
-            color: #888;
+        .hero-student-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
-        @keyframes floatBadge {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-6px); }
+        .hero-right-tagline {
+            font-size: clamp(0.95rem, 1.2vw, 1.05rem);
+            color: #666;
+            line-height: 1.6;
+            max-width: 320px;
+            font-weight: 500;
+        }
+        .hero-right-tagline .highlight-blue {
+            color: #0d2955;
+            font-weight: 700;
+        }
+        .hero-right-tagline .highlight-red {
+            color: #d32f2f;
+            font-weight: 700;
+        }
+
+        /* Store buttons styled like App Store / Google Play */
+        .hero-store-btns {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            width: 100%;
+        }
+        
+        .store-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.9rem;
+            background: #0d2955; /* Matched to logo color */
+            color: #ffffff;
+            padding: 0.7rem 1.6rem;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.25s cubic-bezier(0.25, 0.8, 0.25, 1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            max-width: 220px;
+            box-shadow: 0 4px 12px rgba(13, 41, 85, 0.15);
+        }
+        .store-btn:hover {
+            transform: translateY(-3px);
+            background: #091c3b;
+            box-shadow: 0 8px 24px rgba(13, 41, 85, 0.3);
+        }
+        .store-btn svg {
+            flex-shrink: 0;
+            width: 24px;
+            height: 24px;
+            fill: #ffffff;
+        }
+        
+        .btn-text {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            line-height: 1.25;
+        }
+        .btn-sub {
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 0.8px;
+            opacity: 0.8;
+            text-transform: uppercase;
+        }
+        .btn-main {
+            font-size: 1.05rem;
+            font-weight: 700;
         }
 
         /* ── Responsive ── */
-        @media (max-width: 900px) {
-            .hero-bg-title { font-size: 4.5rem; }
+        @media (max-width: 992px) {
+            .hero-bg-title {
+                font-size: clamp(4rem, 10vw, 7rem);
+                top: 38%;
+            }
             .hero-layout {
                 grid-template-columns: 1fr;
                 grid-template-rows: auto auto auto;
                 text-align: center;
-                padding: 100px 24px 60px;
-                gap: 2rem 0;
+                padding: 120px 24px 0 24px;
+                gap: 2rem;
             }
             .hero-left, .hero-right {
                 align-items: center;
+                margin-bottom: 0;
             }
-            .hero-sub { max-width: 100%; }
-            .hero-store-btns { flex-direction: row; flex-wrap: wrap; justify-content: center; }
-            .hero-channel-badge { display: none; }
+            .hero-left {
+                order: 1;
+            }
+            .hero-center {
+                order: 2;
+                align-self: end;
+            }
+            .hero-right {
+                order: 3;
+                padding-bottom: 40px;
+            }
+            .hero-right-tagline {
+                max-width: 100%;
+            }
+            .hero-store-btns {
+                flex-direction: row;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            .hero-phone-img {
+                width: 280px;
+                transform: translateY(0);
+            }
+            .hero-phone-img:hover {
+                transform: scale(1.02);
+            }
         }
 
         /* LEGACY CLASSES – kept so no other CSS breaks */
@@ -307,26 +397,19 @@
     <!-- CBSE Digest Hero Section – Flash.co style -->
     <section class="cbsedigest-hero">
 
-        <!-- Background blobs -->
-        <div class="hero-blob hero-blob-1"></div>
-        <div class="hero-blob hero-blob-2"></div>
-        <div class="hero-blob hero-blob-3"></div>
-        <div class="hero-blob hero-blob-4"></div>
+        <!-- Background concentric rings -->
+        <div class="hero-ring hero-ring-1"></div>
+        <div class="hero-ring hero-ring-2"></div>
+        <div class="hero-ring hero-ring-3"></div>
+        <div class="hero-ring hero-ring-4"></div>
+
+        <!-- White radial glow behind phone -->
+        <div class="hero-glow"></div>
 
         <!-- Giant background title text -->
         <div class="hero-bg-title" aria-hidden="true">
             <span>Welcome</span>
-            <span>To CBSE</span>
-            <span>digest</span>
-        </div>
-
-        <!-- Floating channel badge -->
-        <div class="hero-channel-badge">
-            <div class="cbse-dot">CBSE<br>digest</div>
-            <div class="badge-text">
-                <strong>CBSE digest</strong>
-                <span>1.2M subscribers</span>
-            </div>
+            <span>To Digest</span>
         </div>
 
         <!-- Three-column layout -->
@@ -334,22 +417,17 @@
 
             <!-- LEFT: tagline -->
             <div class="hero-left">
-                <p class="hero-tagline">
+                <!-- Floating Square Logo Badge -->
+                <div class="hero-badge-card">
+                    <img src="cbse-digest-logo-sq.png" alt="CBSE Digest Logo" class="hero-badge-logo">
+                </div>
+                <h1 class="hero-tagline">
                     The <span class="accent">ultimate</span> free<br>science learning<br>channel is here.
-                </p>
-                <p class="hero-sub">
-                    Master Physics, Chemistry &amp; Science with expert-led video lectures — completely free for Class 10 &amp; 11 CBSE students.
-                </p>
+                </h1>
             </div>
 
             <!-- CENTER: hand holding phone -->
             <div class="hero-center">
-                <!--
-                    Replace the src below with your actual hand-holding-phone image path.
-                    The image in the design reference shows a realistic hand holding an iPhone
-                    displaying the CBSE digest YouTube channel.
-                    Recommended: export the image as 'hand-phone.png' and place it in the same folder.
-                -->
                 <img
                     src="hand-phone.png"
                     alt="Hand holding phone showing CBSE digest YouTube channel"
@@ -359,9 +437,9 @@
                 <!-- Fallback rendered phone mockup if image is missing -->
                 <div style="display:none; flex-direction:column; align-items:center; width:240px; height:480px; background:#111; border-radius:36px; overflow:hidden; box-shadow:0 24px 60px rgba(0,0,0,0.35); border:8px solid #222;">
                     <div style="width:80px;height:20px;background:#000;border-radius:0 0 14px 14px;margin-bottom:8px;"></div>
-                    <div style="background:#1a1de8;padding:10px 14px;display:flex;align-items:center;gap:8px;width:100%;box-sizing:border-box;">
-                        <div style="width:32px;height:32px;background:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:800;color:#1a1de8;text-align:center;line-height:1.1;flex-shrink:0;">CBSE<br>digest</div>
-                        <div style="color:#fff;font-size:11px;font-weight:700;">CBSE digest<br><span style="font-weight:400;opacity:.8;font-size:9px;">1.2M subscribers</span></div>
+                    <div style="background:#0d2955;padding:10px 14px;display:flex;align-items:center;gap:8px;width:100%;box-sizing:border-box;">
+                        <img src="cbse-digest-logo-sq.png" style="width:32px;height:32px;border-radius:50%;object-fit:cover;" alt="Logo">
+                        <div style="color:#fff;font-size:11px;font-weight:700;line-height:1.2;">CBSE digest<br><span style="font-weight:400;opacity:.8;font-size:9px;">1.2M subscribers</span></div>
                     </div>
                     <div style="background:#0a1628;padding:12px;flex:1;width:100%;box-sizing:border-box;">
                         <div style="background:#1a237e;color:#90caf9;font-size:9px;font-weight:700;padding:4px 6px;border-radius:4px;margin-bottom:6px;">Class 10 Science</div>
@@ -384,33 +462,42 @@
 
             <!-- RIGHT: right-side text + store buttons -->
             <div class="hero-right">
+                <!-- Floating Student Avatar Card -->
+                <div class="hero-student-card">
+                    <img src="student-avatar.png" alt="Happy CBSE Digest Student" class="hero-student-img">
+                </div>
+                
                 <p class="hero-right-tagline">
-                    Bye bye confusion. Say <span class="accent-blue">hello</span> to clarity.<br>
-                    <span class="accent-blue">Hello</span> expert explanations.<br>
-                    <span class="accent-red">Goodbye</span> exam stress.
+                    Bye bye confusion. Say <span class="highlight-red">goodbye</span> to exam stress.<br>
+                    <span class="highlight-blue">Hello</span> expert explanations and top grades.
                 </p>
 
                 <div class="hero-store-btns">
                     <a href="https://www.youtube.com/@CBSEdigest" target="_blank" class="store-btn">
-                        <!-- YouTube play icon -->
+                        <!-- YouTube Play Icon -->
                         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 00.5 6.2 31.4 31.4 0 000 12a31.4 31.4 0 00.5 5.8 3 3 0 002.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 002.1-2.1A31.4 31.4 0 0024 12a31.4 31.4 0 00-.5-5.8zM9.7 15.5V8.5l6.3 3.5-6.3 3.5z"/>
                         </svg>
-                        Subscribe on YouTube
+                        <div class="btn-text">
+                            <span class="btn-sub">SUBSCRIBE ON</span>
+                            <span class="btn-main">YouTube</span>
+                        </div>
                     </a>
-                    <a href="https://wa.me/+919787692116" target="_blank" class="store-btn" style="background:#1a1de8;">
-                        <!-- WhatsApp icon -->
+                    <a href="https://wa.me/+919787692116" target="_blank" class="store-btn">
+                        <!-- WhatsApp Icon -->
                         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path d="M17.47 14.38c-.3-.15-1.75-.86-2.02-.96s-.47-.15-.67.15-.77.96-.94 1.16-.35.22-.64.07a8.07 8.07 0 01-2.38-1.47 8.9 8.9 0 01-1.65-2.05c-.17-.3 0-.46.13-.6s.3-.35.44-.52a2 2 0 00.3-.5.55.55 0 000-.52c-.08-.15-.67-1.6-.91-2.19s-.49-.5-.67-.51h-.57a1.1 1.1 0 00-.8.38 3.36 3.36 0 00-1.05 2.5 5.84 5.84 0 001.22 3.1 13.38 13.38 0 005.12 4.52c.72.31 1.28.5 1.72.64a4.14 4.14 0 001.9.12 3.08 3.08 0 002.02-1.43 2.5 2.5 0 00.17-1.43c-.07-.13-.27-.2-.57-.35zM12 21.7A9.7 9.7 0 016.1 19.7L2.3 20.7l1-3.7a9.71 9.71 0 1110.7 4.7zm0-21.7A12 12 0 000 12a11.87 11.87 0 001.64 6.06L0 24l6.12-1.6A12 12 0 1012 0z"/>
                         </svg>
-                        Contact on WhatsApp
+                        <div class="btn-text">
+                            <span class="btn-sub">CONTACT ON</span>
+                            <span class="btn-main">WhatsApp</span>
+                        </div>
                     </a>
                 </div>
-
-                <p style="font-size:0.82rem;color:#777;">
-                    Join thousands of students learning with CBSE digest — free, forever.
-                </p>
             </div>
+
+        </div>
+    </section>
 
         </div>
     </section>
