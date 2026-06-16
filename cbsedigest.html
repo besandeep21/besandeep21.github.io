@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CBSE Digest - Free Physics & Chemistry on YouTube</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <meta name="description" content="CBSE Digest - Free Physics and Chemistry lecture videos for Class 10 & 11 students. Subscribe now for daily learning.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* CBSE Digest Specific Styles */
+        .cbsedigest-hero {
+            background: linear-gradient(135deg, #f5f7fa 0%, #ffffff 100%);
+            padding: 80px 0 60px;
+            margin-top: 60px;
+            min-height: 90vh;
+        }
+
+        .cbsedigest-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .cbsedigest-left {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .cbsedigest-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, rgba(255, 0, 0, 0.1), rgba(255, 107, 53, 0.1));
+            color: #FF6B35;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            width: fit-content;
+            font-size: 0.9rem;
+            font-weight: 700;
+            animation: slideInLeft 0.6s ease-out;
+        }
+
+        .cbsedigest-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            color: var(--primary-blue);
+            animation: slideInLeft 0.6s ease-out 0.1s backwards;
+        }
+
+        .cbsedigest-description {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            line-height: 1.8;
+            max-width: 500px;
+            animation: slideInLeft 0.6s ease-out 0.2s backwards;
+        }
+
+        .cbsedigest-status {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            border: 2px solid var(--border-gray);
+            animation: slideInLeft 0.6s ease-out 0.3s backwards;
+        }
+
+        .status-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .status-icon {
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .status-content h4 {
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 0.25rem;
+        }
+
+        .status-content p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .status-live {
+            border-left: 4px solid var(--success-green);
+        }
+
+        .status-coming {
+            border-left: 4px solid var(--accent-gold);
+            opacity: 0.8;
+        }
+
+        .cbsedigest-cta {
+            animation: slideInLeft 0.6s ease-out 0.4s backwards;
+        }
+
+        .btn-youtube {
+            background: linear-gradient(135deg, #FF0000, #FF6B35);
+            color: var(--white);
+            padding: 1rem 2rem;
+            display: inline-block;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all var(--transition-normal);
+            font-size: 1rem;
+        }
+
+        .btn-youtube:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255, 0, 0, 0.3);
+        }
+
+        /* Phone Mockup */
+        .cbsedigest-right {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: slideInRight 0.6s ease-out 0.3s backwards;
+        }
+
+        .phone-mockup {
+            position: relative;
+            width: 300px;
+            height: 600px;
+            background: var(--white);
+            border-radius: 40px;
+            padding: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            border: 10px solid #000;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .phone-notch {
+            height: 25px;
+            background: #000;
+            border-radius: 0 0 20px 20px;
+            margin-bottom: 8px;
+            position: relative;
+        }
+
+        .phone-content {
+            flex: 1;
+            background: var(--white);
+            border-radius: 30px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            background: linear-gradient(135deg, #FF0000, #FF6B35);
+        }
+
+        .youtube-header {
+            background: #000;
+            padding: 1rem;
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.5rem;
+        }
+
+        .youtube-logo {
+            width: 24px;
+            height: 24px;
+            background: #FF0000;
+            border-radius: 3px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 800;
+            color: var(--white);
+        }
+
+        .youtube-search {
+            flex: 1;
+            padding: 0.5rem 0.75rem;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            border: none;
+            color: var(--white);
+            font-size: 0.75rem;
+            outline: none;
+        }
+
+        .youtube-search::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .youtube-content {
+            flex: 1;
+            padding: 1rem;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .video-item {
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            padding: 0.75rem;
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .video-thumb {
+            width: 50px;
+            height: 50px;
+            background: #000;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+
+        .video-info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        .video-title {
+            font-size: 0.7rem;
+            color: var(--white);
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        .video-meta {
+            font-size: 0.6rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        @media (max-width: 768px) {
+            .cbsedigest-hero {
+                padding: 100px 0 60px;
+            }
+
+            .cbsedigest-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .cbsedigest-title {
+                font-size: 2.2rem;
+            }
+
+            .cbsedigest-description {
+                font-size: 1rem;
+            }
+
+            .phone-mockup {
+                width: 250px;
+                height: 500px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation (Same as main site) -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo" id="logoHome" style="cursor: pointer;" onclick="window.location.href='index.html';">
+                <div class="logo-text">PROF. DR. S. BALAJI SCIENCE ACADEMY</div>
+            </div>
+            <button class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="nav-menu" id="navMenu">
+                <a href="index.html#hero" class="nav-link nav-home">Home</a>
+                <a href="index.html#about" class="nav-link">About</a>
+                <a href="index.html#courses" class="nav-link">Courses</a>
+                <a href="index.html#blog" class="nav-link">Blog</a>
+                <a href="index.html#contact" class="nav-link nav-cta">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- CBSE Digest Hero Section -->
+    <section class="cbsedigest-hero">
+        <div class="container">
+            <div class="cbsedigest-container">
+                <!-- Left Side -->
+                <div class="cbsedigest-left">
+                    <div class="cbsedigest-badge">
+                        <span>📺</span>
+                        Free Learning • Daily Videos
+                    </div>
+
+                    <h1 class="cbsedigest-title">Welcome to<br><span style="background: linear-gradient(135deg, #FF0000, #FF6B35); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">CBSEdigest</span></h1>
+
+                    <p class="cbsedigest-description">
+                        Master Physics, Chemistry, and Science with expert-led video lectures. Free content for Class 10 & 11 students preparing for CBSE board exams.
+                    </p>
+
+                    <!-- Status Cards -->
+                    <div class="cbsedigest-status">
+                        <div class="status-item status-live">
+                            <div class="status-icon">🎬</div>
+                            <div class="status-content">
+                                <h4>Class 10 Science</h4>
+                                <p>Complete lecture series now uploading</p>
+                            </div>
+                        </div>
+
+                        <div class="status-item status-coming">
+                            <div class="status-icon">⏳</div>
+                            <div class="status-content">
+                                <h4>Class 11 Physics & Chemistry</h4>
+                                <p>Expert videos coming very soon</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CTA -->
+                    <div class="cbsedigest-cta">
+                        <a href="https://www.youtube.com/@CBSEdigest" target="_blank" class="btn-youtube">
+                            ▶ Subscribe on YouTube
+                        </a>
+                        <p style="color: var(--text-light); font-size: 0.85rem; margin-top: 1rem;">
+                            Join thousands of students learning with CBSEdigest
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Right Side - Phone Mockup -->
+                <div class="cbsedigest-right">
+                    <div class="phone-mockup">
+                        <div class="phone-notch"></div>
+                        <div class="phone-content">
+                            <div class="youtube-header">
+                                <div class="youtube-logo">▶</div>
+                                <input type="text" class="youtube-search" placeholder="Search...">
+                                <span style="font-size: 14px;">⋯</span>
+                            </div>
+                            <div class="youtube-content">
+                                <div class="video-item">
+                                    <div class="video-thumb">🔬</div>
+                                    <div class="video-info">
+                                        <div class="video-title">Atomic Structure Explained</div>
+                                        <div class="video-meta">2.3M views • 1 day ago</div>
+                                    </div>
+                                </div>
+
+                                <div class="video-item">
+                                    <div class="video-thumb">⚛️</div>
+                                    <div class="video-info">
+                                        <div class="video-title">Chemical Bonding Basics</div>
+                                        <div class="video-meta">1.8M views • 2 days ago</div>
+                                    </div>
+                                </div>
+
+                                <div class="video-item">
+                                    <div class="video-thumb">💫</div>
+                                    <div class="video-info">
+                                        <div class="video-title">Motion & Forces Part 1</div>
+                                        <div class="video-meta">2.1M views • 3 days ago</div>
+                                    </div>
+                                </div>
+
+                                <div class="video-item">
+                                    <div class="video-thumb">⚡</div>
+                                    <div class="video-info">
+                                        <div class="video-title">Electricity Fundamentals</div>
+                                        <div class="video-meta">1.5M views • 4 days ago</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (Same as main site) -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Prof. Dr. S. Balaji</h4>
+                    <p>Inspiring students through expert Physics and Chemistry coaching since 1999.</p>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="index.html#about">About Us</a></li>
+                        <li><a href="index.html#courses">Courses</a></li>
+                        <li><a href="index.html#modes">How It Works</a></li>
+                        <li><a href="https://profbalaji.substack.com">Blog</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="https://www.youtube.com/@CBSEdigest">CBSE Digest</a></li>
+                        <li><a href="index.html#faqs">FAQs</a></li>
+                        <li><a href="https://profbalaji.substack.com">Board Exam Insider</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="https://wa.me/+919787692116">WhatsApp Support</a></li>
+                        <li><a href="tel:+919787692116">Call Us</a></li>
+                        <li><a href="index.html#contact">Book Demo</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section footer-contact">
+                    <h4>Contact Info</h4>
+                    <p>
+                        <strong>📍 Kanchipuram</strong><br>
+                        No. 26, Avvai Street, Athiyaman Nagar<br>
+                        Kanchipuram – 631 501<br><br>
+                        <strong>📞 +91 97876 92116</strong><br>
+                        <strong>📧 profbalaji@email.com</strong>
+                    </p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 <strong>Prof. Dr. S. Balaji Science Academy</strong>. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+        });
+
+        // Close menu when link clicked
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                menuToggle.classList.remove('active');
+            });
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>
