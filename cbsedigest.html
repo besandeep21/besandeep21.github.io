@@ -11,207 +11,212 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        /* CBSE Digest Specific Styles */
-        .cbsedigest-hero {
-            background: linear-gradient(135deg, #f5f7fa 0%, #ffffff 100%);
-            padding: 80px 0 60px;
-            margin-top: 60px;
-            min-height: 90vh;
-        }
+        /* ── CBSE Digest Hero – Flash.co inspired ── */
 
-        .cbsedigest-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
+        /* ── Hero shell ── */
+        .cbsedigest-hero {
+            position: relative;
+            background: #e8eaf6;
+            min-height: 100vh;
+            margin-top: 60px;
+            overflow: hidden;
+            display: flex;
             align-items: center;
         }
 
-        .cbsedigest-left {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
+        /* ── Decorative background circles (the light blobs) ── */
+        .hero-blob {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.55);
+            pointer-events: none;
+        }
+        .hero-blob-1 { width: 420px; height: 420px; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+        .hero-blob-2 { width: 280px; height: 280px; top: 10%; left: 8%; }
+        .hero-blob-3 { width: 200px; height: 200px; bottom: 8%; left: 12%; opacity: 0.5; }
+        .hero-blob-4 { width: 160px; height: 160px; top: 18%; right: 22%; opacity: 0.45; }
+
+        /* ── Huge background title text ── */
+        .hero-bg-title {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: clamp(6rem, 13vw, 11rem);
+            font-weight: 900;
+            color: #0d0f3c;
+            white-space: nowrap;
+            line-height: 1.1;
+            text-align: center;
+            pointer-events: none;
+            user-select: none;
+            z-index: 1;
+            letter-spacing: -0.02em;
+        }
+        .hero-bg-title span {
+            display: block;
         }
 
-        .cbsedigest-badge {
+        /* ── Three-column layout ── */
+        .hero-layout {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 80px 40px;
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 0 2rem;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* ── Left column ── */
+        .hero-left {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+        .hero-tagline {
+            font-size: clamp(1.6rem, 2.8vw, 2.2rem);
+            font-weight: 800;
+            color: #0d0f3c;
+            line-height: 1.3;
+        }
+        .hero-tagline .accent {
+            color: #1a1de8;
+        }
+        .hero-sub {
+            font-size: 1rem;
+            color: #555;
+            line-height: 1.7;
+            max-width: 320px;
+        }
+
+        /* ── Center column – phone ── */
+        .hero-center {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+        }
+        .hero-phone-img {
+            width: clamp(260px, 22vw, 340px);
+            height: auto;
+            display: block;
+            filter: drop-shadow(0 24px 48px rgba(0,0,0,0.22));
+        }
+
+        /* ── Right column ── */
+        .hero-right {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 1.5rem;
+        }
+        .hero-right-tagline {
+            font-size: 1rem;
+            color: #0d0f3c;
+            line-height: 1.6;
+        }
+        .hero-right-tagline .accent-blue  { color: #1a1de8; font-weight: 700; }
+        .hero-right-tagline .accent-red   { color: #e81a1a; font-weight: 700; }
+
+        /* Store buttons */
+        .hero-store-btns {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        .store-btn {
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
-            background: linear-gradient(135deg, rgba(255, 0, 0, 0.1), rgba(255, 107, 53, 0.1));
-            color: #FF6B35;
-            padding: 0.75rem 1.5rem;
+            gap: 0.75rem;
+            background: #0d0f3c;
+            color: #fff;
+            padding: 0.85rem 1.75rem;
             border-radius: 50px;
-            width: fit-content;
-            font-size: 0.9rem;
+            text-decoration: none;
             font-weight: 700;
-            animation: slideInLeft 0.6s ease-out;
+            font-size: 0.95rem;
+            min-width: 200px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .store-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 28px rgba(13,15,60,0.3);
+        }
+        .store-btn svg {
+            flex-shrink: 0;
+            width: 20px;
+            height: 20px;
+            fill: #fff;
         }
 
-        .cbsedigest-title {
-            font-size: 3.5rem;
+        /* ── Floating channel badge (top-right of phone area) ── */
+        .hero-channel-badge {
+            position: absolute;
+            top: 18%;
+            right: calc(50% - 280px);
+            background: #fff;
+            border-radius: 16px;
+            padding: 0.6rem 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            box-shadow: 0 6px 24px rgba(0,0,0,0.12);
+            z-index: 3;
+            animation: floatBadge 3s ease-in-out infinite;
+        }
+        .hero-channel-badge .cbse-dot {
+            width: 36px;
+            height: 36px;
+            background: #1a1de8;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 0.55rem;
             font-weight: 800;
-            line-height: 1.2;
-            color: var(--primary-blue);
-            animation: slideInLeft 0.6s ease-out 0.1s backwards;
-        }
-
-        .cbsedigest-description {
-            font-size: 1.1rem;
-            color: var(--text-light);
-            line-height: 1.8;
-            max-width: 500px;
-            animation: slideInLeft 0.6s ease-out 0.2s backwards;
-        }
-
-        .cbsedigest-status {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            padding: 1.5rem;
-            background: var(--white);
-            border-radius: var(--radius-lg);
-            border: 2px solid var(--border-gray);
-            animation: slideInLeft 0.6s ease-out 0.3s backwards;
-        }
-
-        .status-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 1rem;
-        }
-
-        .status-icon {
-            font-size: 1.5rem;
+            text-align: center;
+            line-height: 1.1;
             flex-shrink: 0;
         }
-
-        .status-content h4 {
-            font-weight: 700;
-            color: var(--primary-blue);
-            margin-bottom: 0.25rem;
+        .badge-text strong {
+            display: block;
+            font-size: 0.78rem;
+            color: #0d0f3c;
+        }
+        .badge-text span {
+            font-size: 0.68rem;
+            color: #888;
         }
 
-        .status-content p {
-            font-size: 0.9rem;
-            color: var(--text-light);
+        @keyframes floatBadge {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
         }
 
-        .status-live {
-            border-left: 4px solid var(--success-green);
+        /* ── Responsive ── */
+        @media (max-width: 900px) {
+            .hero-bg-title { font-size: 4.5rem; }
+            .hero-layout {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto auto auto;
+                text-align: center;
+                padding: 100px 24px 60px;
+                gap: 2rem 0;
+            }
+            .hero-left, .hero-right {
+                align-items: center;
+            }
+            .hero-sub { max-width: 100%; }
+            .hero-store-btns { flex-direction: row; flex-wrap: wrap; justify-content: center; }
+            .hero-channel-badge { display: none; }
         }
 
-        .status-coming {
-            border-left: 4px solid var(--accent-gold);
-            opacity: 0.8;
-        }
-
-        .cbsedigest-cta {
-            animation: slideInLeft 0.6s ease-out 0.4s backwards;
-        }
-
-        .btn-youtube {
-            background: linear-gradient(135deg, #FF0000, #FF6B35);
-            color: var(--white);
-            padding: 1rem 2rem;
-            display: inline-block;
-            border-radius: 50px;
-            font-weight: 700;
-            text-decoration: none;
-            transition: all var(--transition-normal);
-            font-size: 1rem;
-        }
-
-        .btn-youtube:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(255, 0, 0, 0.3);
-        }
-
-        /* Phone Mockup */
-        .cbsedigest-right {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            animation: slideInRight 0.6s ease-out 0.3s backwards;
-        }
-
-        .phone-mockup {
-            position: relative;
-            width: 300px;
-            height: 600px;
-            background: var(--white);
-            border-radius: 40px;
-            padding: 12px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            border: 10px solid #000;
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-        }
-
-        .phone-notch {
-            height: 25px;
-            background: #000;
-            border-radius: 0 0 20px 20px;
-            margin-bottom: 8px;
-            position: relative;
-        }
-
-        .phone-content {
-            flex: 1;
-            background: var(--white);
-            border-radius: 30px;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            background: linear-gradient(135deg, #FF0000, #FF6B35);
-        }
-
-        .youtube-header {
-            background: #000;
-            padding: 1rem;
-            color: var(--white);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 0.5rem;
-        }
-
-        .youtube-logo {
-            width: 24px;
-            height: 24px;
-            background: #FF0000;
-            border-radius: 3px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 12px;
-            font-weight: 800;
-            color: var(--white);
-        }
-
-        .youtube-search {
-            flex: 1;
-            padding: 0.5rem 0.75rem;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 20px;
-            border: none;
-            color: var(--white);
-            font-size: 0.75rem;
-            outline: none;
-        }
-
-        .youtube-search::placeholder {
-            color: rgba(255, 255, 255, 0.6);
-        }
-
-        .youtube-content {
-            flex: 1;
-            padding: 1rem;
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
+        /* LEGACY CLASSES – kept so no other CSS breaks */
         .video-item {
             background: rgba(0, 0, 0, 0.1);
             border-radius: 8px;
@@ -299,100 +304,114 @@
         </div>
     </nav>
 
-    <!-- CBSE Digest Hero Section -->
+    <!-- CBSE Digest Hero Section – Flash.co style -->
     <section class="cbsedigest-hero">
-        <div class="container">
-            <div class="cbsedigest-container">
-                <!-- Left Side -->
-                <div class="cbsedigest-left">
-                    <div class="cbsedigest-badge">
-                        <span>📺</span>
-                        Free Learning • Daily Videos
+
+        <!-- Background blobs -->
+        <div class="hero-blob hero-blob-1"></div>
+        <div class="hero-blob hero-blob-2"></div>
+        <div class="hero-blob hero-blob-3"></div>
+        <div class="hero-blob hero-blob-4"></div>
+
+        <!-- Giant background title text -->
+        <div class="hero-bg-title" aria-hidden="true">
+            <span>Welcome</span>
+            <span>To CBSE</span>
+            <span>digest</span>
+        </div>
+
+        <!-- Floating channel badge -->
+        <div class="hero-channel-badge">
+            <div class="cbse-dot">CBSE<br>digest</div>
+            <div class="badge-text">
+                <strong>CBSE digest</strong>
+                <span>1.2M subscribers</span>
+            </div>
+        </div>
+
+        <!-- Three-column layout -->
+        <div class="hero-layout">
+
+            <!-- LEFT: tagline -->
+            <div class="hero-left">
+                <p class="hero-tagline">
+                    The <span class="accent">ultimate</span> free<br>science learning<br>channel is here.
+                </p>
+                <p class="hero-sub">
+                    Master Physics, Chemistry &amp; Science with expert-led video lectures — completely free for Class 10 &amp; 11 CBSE students.
+                </p>
+            </div>
+
+            <!-- CENTER: hand holding phone -->
+            <div class="hero-center">
+                <!--
+                    Replace the src below with your actual hand-holding-phone image path.
+                    The image in the design reference shows a realistic hand holding an iPhone
+                    displaying the CBSE digest YouTube channel.
+                    Recommended: export the image as 'hand-phone.png' and place it in the same folder.
+                -->
+                <img
+                    src="hand-phone.png"
+                    alt="Hand holding phone showing CBSE digest YouTube channel"
+                    class="hero-phone-img"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                >
+                <!-- Fallback rendered phone mockup if image is missing -->
+                <div style="display:none; flex-direction:column; align-items:center; width:240px; height:480px; background:#111; border-radius:36px; overflow:hidden; box-shadow:0 24px 60px rgba(0,0,0,0.35); border:8px solid #222;">
+                    <div style="width:80px;height:20px;background:#000;border-radius:0 0 14px 14px;margin-bottom:8px;"></div>
+                    <div style="background:#1a1de8;padding:10px 14px;display:flex;align-items:center;gap:8px;width:100%;box-sizing:border-box;">
+                        <div style="width:32px;height:32px;background:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:800;color:#1a1de8;text-align:center;line-height:1.1;flex-shrink:0;">CBSE<br>digest</div>
+                        <div style="color:#fff;font-size:11px;font-weight:700;">CBSE digest<br><span style="font-weight:400;opacity:.8;font-size:9px;">1.2M subscribers</span></div>
                     </div>
-
-                    <h1 class="cbsedigest-title">Welcome to<br><span style="background: linear-gradient(135deg, #FF0000, #FF6B35); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">CBSEdigest</span></h1>
-
-                    <p class="cbsedigest-description">
-                        Master Physics, Chemistry, and Science with expert-led video lectures. Free content for Class 10 & 11 students preparing for CBSE board exams.
-                    </p>
-
-                    <!-- Status Cards -->
-                    <div class="cbsedigest-status">
-                        <div class="status-item status-live">
-                            <div class="status-icon">🎬</div>
-                            <div class="status-content">
-                                <h4>Class 10 Science</h4>
-                                <p>Complete lecture series now uploading</p>
-                            </div>
+                    <div style="background:#0a1628;padding:12px;flex:1;width:100%;box-sizing:border-box;">
+                        <div style="background:#1a237e;color:#90caf9;font-size:9px;font-weight:700;padding:4px 6px;border-radius:4px;margin-bottom:6px;">Class 10 Science</div>
+                        <div style="color:#fff;font-size:11px;font-weight:700;line-height:1.3;margin-bottom:12px;">Chapter 1<br>Chemical Reactions<br>and Equations</div>
+                        <div style="background:rgba(255,255,255,0.08);border-radius:6px;padding:8px;margin-bottom:8px;display:flex;gap:8px;align-items:center;">
+                            <div style="width:44px;height:30px;background:#ff5722;border-radius:4px;flex-shrink:0;"></div>
+                            <div style="color:#fff;font-size:8px;">Class 10 | Ch 2 | Acids, Bases...<br><span style="color:#aaa;">38K views • 1 week ago</span></div>
                         </div>
-
-                        <div class="status-item status-coming">
-                            <div class="status-icon">⏳</div>
-                            <div class="status-content">
-                                <h4>Class 11 Physics & Chemistry</h4>
-                                <p>Expert videos coming very soon</p>
-                            </div>
+                        <div style="background:rgba(255,255,255,0.08);border-radius:6px;padding:8px;margin-bottom:8px;display:flex;gap:8px;align-items:center;">
+                            <div style="width:44px;height:30px;background:#4caf50;border-radius:4px;flex-shrink:0;"></div>
+                            <div style="color:#fff;font-size:8px;">Class 10 | Ch 3 | Metals and...<br><span style="color:#aaa;">32K views • 3 days ago</span></div>
                         </div>
-                    </div>
-
-                    <!-- CTA -->
-                    <div class="cbsedigest-cta">
-                        <a href="https://www.youtube.com/@CBSEdigest" target="_blank" class="btn-youtube">
-                            ▶ Subscribe on YouTube
-                        </a>
-                        <p style="color: var(--text-light); font-size: 0.85rem; margin-top: 1rem;">
-                            Join thousands of students learning with CBSEdigest
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Right Side - Phone Mockup -->
-                <div class="cbsedigest-right">
-                    <div class="phone-mockup">
-                        <div class="phone-notch"></div>
-                        <div class="phone-content">
-                            <div class="youtube-header">
-                                <div class="youtube-logo">▶</div>
-                                <input type="text" class="youtube-search" placeholder="Search...">
-                                <span style="font-size: 14px;">⋯</span>
-                            </div>
-                            <div class="youtube-content">
-                                <div class="video-item">
-                                    <div class="video-thumb">🔬</div>
-                                    <div class="video-info">
-                                        <div class="video-title">Atomic Structure Explained</div>
-                                        <div class="video-meta">2.3M views • 1 day ago</div>
-                                    </div>
-                                </div>
-
-                                <div class="video-item">
-                                    <div class="video-thumb">⚛️</div>
-                                    <div class="video-info">
-                                        <div class="video-title">Chemical Bonding Basics</div>
-                                        <div class="video-meta">1.8M views • 2 days ago</div>
-                                    </div>
-                                </div>
-
-                                <div class="video-item">
-                                    <div class="video-thumb">💫</div>
-                                    <div class="video-info">
-                                        <div class="video-title">Motion & Forces Part 1</div>
-                                        <div class="video-meta">2.1M views • 3 days ago</div>
-                                    </div>
-                                </div>
-
-                                <div class="video-item">
-                                    <div class="video-thumb">⚡</div>
-                                    <div class="video-info">
-                                        <div class="video-title">Electricity Fundamentals</div>
-                                        <div class="video-meta">1.5M views • 4 days ago</div>
-                                    </div>
-                                </div>
-                            </div>
+                        <div style="background:rgba(255,255,255,0.08);border-radius:6px;padding:8px;display:flex;gap:8px;align-items:center;">
+                            <div style="width:44px;height:30px;background:#9c27b0;border-radius:4px;flex-shrink:0;"></div>
+                            <div style="color:#fff;font-size:8px;">Class 10 | Ch 4 | Carbon and...<br><span style="color:#aaa;">29K views • 4 days ago</span></div>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <!-- RIGHT: right-side text + store buttons -->
+            <div class="hero-right">
+                <p class="hero-right-tagline">
+                    Bye bye confusion. Say <span class="accent-blue">hello</span> to clarity.<br>
+                    <span class="accent-blue">Hello</span> expert explanations.<br>
+                    <span class="accent-red">Goodbye</span> exam stress.
+                </p>
+
+                <div class="hero-store-btns">
+                    <a href="https://www.youtube.com/@CBSEdigest" target="_blank" class="store-btn">
+                        <!-- YouTube play icon -->
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 00.5 6.2 31.4 31.4 0 000 12a31.4 31.4 0 00.5 5.8 3 3 0 002.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 002.1-2.1A31.4 31.4 0 0024 12a31.4 31.4 0 00-.5-5.8zM9.7 15.5V8.5l6.3 3.5-6.3 3.5z"/>
+                        </svg>
+                        Subscribe on YouTube
+                    </a>
+                    <a href="https://wa.me/+919787692116" target="_blank" class="store-btn" style="background:#1a1de8;">
+                        <!-- WhatsApp icon -->
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M17.47 14.38c-.3-.15-1.75-.86-2.02-.96s-.47-.15-.67.15-.77.96-.94 1.16-.35.22-.64.07a8.07 8.07 0 01-2.38-1.47 8.9 8.9 0 01-1.65-2.05c-.17-.3 0-.46.13-.6s.3-.35.44-.52a2 2 0 00.3-.5.55.55 0 000-.52c-.08-.15-.67-1.6-.91-2.19s-.49-.5-.67-.51h-.57a1.1 1.1 0 00-.8.38 3.36 3.36 0 00-1.05 2.5 5.84 5.84 0 001.22 3.1 13.38 13.38 0 005.12 4.52c.72.31 1.28.5 1.72.64a4.14 4.14 0 001.9.12 3.08 3.08 0 002.02-1.43 2.5 2.5 0 00.17-1.43c-.07-.13-.27-.2-.57-.35zM12 21.7A9.7 9.7 0 016.1 19.7L2.3 20.7l1-3.7a9.71 9.71 0 1110.7 4.7zm0-21.7A12 12 0 000 12a11.87 11.87 0 001.64 6.06L0 24l6.12-1.6A12 12 0 1012 0z"/>
+                        </svg>
+                        Contact on WhatsApp
+                    </a>
+                </div>
+
+                <p style="font-size:0.82rem;color:#777;">
+                    Join thousands of students learning with CBSE digest — free, forever.
+                </p>
+            </div>
+
         </div>
     </section>
 
